@@ -1,0 +1,15 @@
+---
+
+- name: Create cluster role
+
+
+- name: Add cluster role to user
+
+
+- name: Add cluster role to group
+
+
+- name: Remove cluster role from user
+
+
+- name: Remove cluster role from group
