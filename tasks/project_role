@@ -1,1 +1,15 @@
+---
 
+- name: Create project role
+
+
+- name: Add role to user
+
+
+- name: Add role to group
+
+
+- name: Remove role from user
+
+
+- name: Remove role from group
