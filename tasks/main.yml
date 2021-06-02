@@ -1,3 +1,7 @@
 ---
 
-import_tasks:
+- import_tasks: cluster_role.yml
+
+- import_tasks: project_role.yml
+
+- import_tasks: scc.yml
