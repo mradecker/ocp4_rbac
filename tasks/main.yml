@@ -1,7 +1,10 @@
 ---
 
 - import_tasks: cluster_role.yml
+  when: cluster_role | bool
 
 - import_tasks: project_role.yml
+  when: project_role | bool
 
 - import_tasks: scc.yml
+  when: scc | bool
