@@ -6,4 +6,5 @@
 - import_tasks: project_role.yml
   when: project_role | bool
 
-
+- import_tasks: self_provision_disable.yml
+  when: self_provision_disable | bool
