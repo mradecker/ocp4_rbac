@@ -1,15 +1,48 @@
 ---
 
 - name: Create cluster role
+  command: 'oc create clusterrole {{ cluster_role_name }} --verb={{ cluster_role_verbs }} --resource={{ cluster_role_resources }} --resource-name={{ cluster_role_resource_name }}'
 
 
 - name: Add cluster role to user
+  k8s:
+    apply: yes
+    definition:
+      apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRoleBinding
+      metadata:
+        name: cluster-admin
+      roleRef:
+        apiGroup: rbac.authorization.k8s.io
+        kind: ClusterRole
+        name: {{ cluster_role_name }}
+      subjects:
+      - apiGroup: rbac.authorization.k8s.io
+        kind: User
+        name: {{ cluster_user }}
 
 
 - name: Add cluster role to group
+  k8s:
+    apply: yes
+    definition:
+      apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRoleBinding
+      metadata:
+        name: cluster-admin
+      roleRef:
+        apiGroup: rbac.authorization.k8s.io
+        kind: ClusterRole
+        name: {{ cluster_role_name }}
+      subjects:
+      - apiGroup: rbac.authorization.k8s.io
+        kind: Group
+        name: {{ cluster_role_group }}
 
 
 - name: Remove cluster role from user
+  command: 'oc adm policy remove-cluster-role-from-user {{ cluster_role_name }} {{ cluster_user }}'
 
 
 - name: Remove cluster role from group
+  command: 'oc adm policy remove-cluster-role-from-group {{ cluster_role_name }} {{ cluster_group }}'
