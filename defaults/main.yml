@@ -1,6 +1,13 @@
 ---
 
-### Choose the boolean value for 'cluster_role' and/or 'project_role' before running the playbook
+### Choose the boolean value for 'cluster_role' and/or 'project_role' to import tasks for one or both types of roles
+### After choosing which type of role(s) you want to work with, scroll down and choose what you would like to have done for each
+### Choose boolean values to create, add, or remove.  Define variables that are required for the selected tasks.
+
+cluster_role: yes
+
+project_role: yes
+
 
 ### Create a cluster role
 create_cluster_role: yes
@@ -43,7 +50,8 @@ role_resources:
 
 role_resource_name:
 
-### Manage your projects by giving users and/or groups roles for one or more projects
+
+### Manage your projects by giving users and/or groups roles/SCCs for one or more projects
 add_role_to_user: yes
 
 add_role_to_group: yes
