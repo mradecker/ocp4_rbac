@@ -1,27 +1,40 @@
 ---
 
-### Choose the boolean value for each before running the playbook
+### Choose the boolean value for 'cluster_role' and/or 'project_role' before running the playbook
 
 ### Add or remove cluster roles to users and/or groups.  
 cluster_role: yes
 
+cluster_role_name:
+
+cluster_role_binding:
+
+cluster_role_user:
+
+cluster_role_group:
+
 
 ### Manage your projects by giving users and/or groups roles for one or more projects
-project_roles: yes
-
-
-### Add or remove security context constraints to users, groups, or service accounts
-scc: yes
-
+project_role: yes
 
 project:
 
 role_name:
 
-cluster_role_name:
+project_user:
 
-user:
-
-group:
+project_group:
 
 service_account:
+
+scc:
+
+
+
+
+
+
+
+
+
+
