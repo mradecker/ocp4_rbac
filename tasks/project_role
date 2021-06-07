@@ -1,15 +1,51 @@
 ---
 
-- name: Create project role
+---
+
+- name: Create role
+  command: 'oc create role {{ role_name }} --verb={{ role_verbs }} --resource={{ role_resources }} --resource-name={{ role_resource_name }}'
 
 
 - name: Add role to user
+  k8s:
+    apply: yes
+    definition:
+      apiVersion: rbac.authorization.k8s.io/v1
+      kind: RoleBinding
+      metadata:
+        name: {{ role_binding_name }}
+      roleRef:
+        apiGroup: rbac.authorization.k8s.io
+        kind: Role
+        name: {{ role_name }}
+      subjects:
+      - apiGroup: rbac.authorization.k8s.io
+        kind: User
+        name: {{ project_user }}
 
 
 - name: Add role to group
+  k8s:
+    apply: yes
+    definition:
+      apiVersion: rbac.authorization.k8s.io/v1
+      kind: RoleBinding
+      metadata:
+        name: {{ role_binding_name }}
+      roleRef:
+        apiGroup: rbac.authorization.k8s.io
+        kind: Role
+        name: {{ role_name }}
+      subjects:
+      - apiGroup: rbac.authorization.k8s.io
+        kind: Group
+        name: {{ role_group }}
 
 
 - name: Remove role from user
+  command: 'oc policy remove-role-from-user {{ role_name }} {{ project_user }}'
 
 
 - name: Remove role from group
+  command: 'oc policy remove-role-from-group {{ role_name }} {{ project_group }}'
+
