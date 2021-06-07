@@ -19,7 +19,7 @@
       subjects:
       - apiGroup: rbac.authorization.k8s.io
         kind: User
-        name: {{ cluster_user }}
+        name: {{ cluster_role_user }}
 
 
 - name: Add cluster role to group
@@ -41,8 +41,8 @@
 
 
 - name: Remove cluster role from user
-  command: 'oc adm policy remove-cluster-role-from-user {{ cluster_role_name }} {{ cluster_user }}'
+  command: 'oc adm policy remove-cluster-role-from-user {{ cluster_role_name }} {{ cluster_role_user }}'
 
 
 - name: Remove cluster role from group
-  command: 'oc adm policy remove-cluster-role-from-group {{ cluster_role_name }} {{ cluster_group }}'
+  command: 'oc adm policy remove-cluster-role-from-group {{ cluster_role_name }} {{ cluster_role_group }}'
