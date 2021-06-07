@@ -2,7 +2,7 @@
 
 - name: Create cluster role
   command: 'oc create clusterrole {{ cluster_role_name }} --verb={{ cluster_role_verbs }} --resource={{ cluster_role_resources }} --resource-name={{ cluster_role_resource_name }}'
-
+  when: create_cluster_role | bool
 
 - name: Add cluster role to user
   k8s:
@@ -20,7 +20,7 @@
       - apiGroup: rbac.authorization.k8s.io
         kind: User
         name: {{ cluster_role_user }}
-
+  when: add_cluster_role_to_user | bool
 
 - name: Add cluster role to group
   k8s:
@@ -38,11 +38,12 @@
       - apiGroup: rbac.authorization.k8s.io
         kind: Group
         name: {{ cluster_role_group }}
-
+  when: add_cluster_role_to_group | bool
 
 - name: Remove cluster role from user
   command: 'oc adm policy remove-cluster-role-from-user {{ cluster_role_name }} {{ cluster_role_user }}'
-
+  when: remove_cluster_role_from_user | bool
 
 - name: Remove cluster role from group
   command: 'oc adm policy remove-cluster-role-from-group {{ cluster_role_name }} {{ cluster_role_group }}'
+  when: remove_cluster_role_from_group | bool
