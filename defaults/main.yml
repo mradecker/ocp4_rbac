@@ -2,8 +2,8 @@
 
 ### Choose the boolean value for 'cluster_role' and/or 'project_role' before running the playbook
 
-### Add or remove cluster roles to users and/or groups.  
-cluster_role: yes
+### Create a cluster role
+create_cluster_role: yes
 
 cluster_role_name:
 
@@ -13,6 +13,16 @@ cluster_role_resources:
 
 cluster_role_resource_name:
 
+
+### Add or remove cluster roles to users and/or groups
+add_cluster_role_to_user: yes
+
+add_cluster_role_to_group: yes
+
+remove_cluster_role_from_user: no
+
+remove_cluster_role_from_group: no
+
 cluster_role_binding:
 
 cluster_role_user:
@@ -20,8 +30,8 @@ cluster_role_user:
 cluster_role_group:
 
 
-### Manage your projects by giving users and/or groups roles for one or more projects
-project_role: yes
+### Create a project role
+create_project_role: yes
 
 project:
 
@@ -32,6 +42,17 @@ role_verbs:
 role_resources:
 
 role_resource_name:
+
+### Manage your projects by giving users and/or groups roles for one or more projects
+add_role_to_user: yes
+
+add_role_to_group: yes
+
+add_scc_to_service_account: yes
+
+remove_role_from_user: no
+
+remove_role_from_group: no
 
 role_binding:
 
