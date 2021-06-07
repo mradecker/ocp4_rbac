@@ -4,7 +4,7 @@
 
 - name: Create role
   command: 'oc create role {{ role_name }} --verb={{ role_verbs }} --resource={{ role_resources }} --resource-name={{ role_resource_name }}'
-
+  when: create_project_role | bool
 
 - name: Add role to user
   k8s:
@@ -22,7 +22,7 @@
       - apiGroup: rbac.authorization.k8s.io
         kind: User
         name: {{ project_user }}
-
+  when: add_role_to_user | bool
 
 - name: Add role to group
   k8s:
@@ -40,16 +40,16 @@
       - apiGroup: rbac.authorization.k8s.io
         kind: Group
         name: {{ role_group }}
-
+  when: add_role_to_group | bool
 
 - name: Remove role from user
   command: 'oc policy remove-role-from-user {{ role_name }} {{ project_user }}'
-
+  when: remove_role_from_user | bool
 
 - name: Remove role from group
   command: 'oc policy remove-role-from-group {{ role_name }} {{ project_group }}'
-  
+  when: remove_role_from_group | bool
   
 - name: Add scc to service account
   command: 'oc adm policy add-scc-to-user {{ scc }} -z {{ service_account }}'
-
+  when: add_scc_to_service_account | bool
