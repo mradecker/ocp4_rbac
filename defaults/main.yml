@@ -7,6 +7,12 @@ cluster_role: yes
 
 cluster_role_name:
 
+cluster_role_verbs:
+
+cluster_role_resources:
+
+cluster_role_resource_name:
+
 cluster_role_binding:
 
 cluster_role_user:
