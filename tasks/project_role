@@ -48,4 +48,8 @@
 
 - name: Remove role from group
   command: 'oc policy remove-role-from-group {{ role_name }} {{ project_group }}'
+  
+  
+- name: Add scc to service account
+  command: 'oc adm policy add-scc-to-user {{ scc }} -z {{ service_account }}'
 
