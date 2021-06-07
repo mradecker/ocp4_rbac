@@ -6,5 +6,4 @@
 - import_tasks: project_role.yml
   when: project_role | bool
 
-- import_tasks: scc.yml
-  when: scc | bool
+
