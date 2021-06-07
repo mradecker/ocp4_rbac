@@ -21,6 +21,14 @@ project:
 
 role_name:
 
+role_verbs:
+
+role_resources:
+
+role_resource_name:
+
+role_binding:
+
 project_user:
 
 project_group:
