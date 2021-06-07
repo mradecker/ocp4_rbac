@@ -1,12 +1,15 @@
 ---
 
-### Choose the boolean value for 'cluster_role' and/or 'project_role' to import tasks for one or both types of roles
-### After choosing which type of role(s) you want to work with, scroll down and choose what you would like to have done for each
+### Choose the boolean value for 'cluster_role' and/or 'project_role' to import tasks for one or both types of roles.
+### After choosing which type of role(s) you want to work with, scroll down and choose what you would like to have done for each.
 ### Choose boolean values to create, add, or remove.  Define variables that are required for the selected tasks.
+### Security policy may require that basic authenticated users have the ability to create projects/namespaces removed.  Use the self_provision_disable tasks to disable that permission.
 
 cluster_role: yes
 
 project_role: yes
+
+self_provision_disable: yes
 
 
 ### Create a cluster role
